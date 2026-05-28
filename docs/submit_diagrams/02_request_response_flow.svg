@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .title { font: 700 34px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .sub { font: 400 18px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #5b6475; }
+      .step { fill: #ffffff; stroke: #d8deea; stroke-width: 2; rx: 10; }
+      .head { font: 700 20px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .body { font: 400 16px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #384255; }
+      .code { font: 600 15px Consolas, 'Malgun Gothic', monospace; fill: #1f5b99; }
+      .num { font: 700 20px Arial, sans-serif; fill: #ffffff; }
+      .note { font: 400 15px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #4c566a; }
+      .badge { fill: #2676c9; }
+      .arrow { stroke: #526179; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke: #8a94a6; stroke-width: 2; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrowGray); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#526179"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#8a94a6"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+  <text class="title" x="70" y="70">요청·응답 처리 흐름도</text>
+  <text class="sub" x="70" y="104">사용자 입력이 서버 서비스 처리와 화면 출력으로 이어지는 과정을 단계별로 정리했습니다.</text>
+
+  <g transform="translate(70,160)">
+    <rect class="step" x="0" y="0" width="260" height="118"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">1</text>
+    <text class="head" x="70" y="38">메뉴 선택</text>
+    <text class="body" x="24" y="75">정류장, 버스, 지하철, 길찾기 등</text>
+    <text class="body" x="24" y="99">사용자가 기능과 입력값을 선택</text>
+  </g>
+  <path class="arrow" d="M330 219 L405 219"/>
+
+  <g transform="translate(405,160)">
+    <rect class="step" x="0" y="0" width="280" height="118"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">2</text>
+    <text class="head" x="70" y="38">요청 문자열 생성</text>
+    <text class="code" x="24" y="75">STOP_SEARCH_REQ|온양온천</text>
+    <text class="body" x="24" y="99">패킷 종류와 본문을 구분자로 조립</text>
+  </g>
+  <path class="arrow" d="M685 219 L760 219"/>
+
+  <g transform="translate(760,160)">
+    <rect class="step" x="0" y="0" width="260" height="118"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">3</text>
+    <text class="head" x="70" y="38">소켓 전송</text>
+    <text class="body" x="24" y="75">client_net.c가 TCP 소켓으로</text>
+    <text class="body" x="24" y="99">한 줄 요청을 서버에 전달</text>
+  </g>
+  <path class="arrow" d="M1020 219 L1095 219"/>
+
+  <g transform="translate(1095,160)">
+    <rect class="step" x="0" y="0" width="235" height="118"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">4</text>
+    <text class="head" x="70" y="38">요청 수신</text>
+    <text class="body" x="24" y="75">client_handler.c가 개행까지</text>
+    <text class="body" x="24" y="99">패킷을 읽어 버퍼에 저장</text>
+  </g>
+
+  <path class="arrow" d="M1212 278 L1212 355"/>
+  <g transform="translate(1095,355)">
+    <rect class="step" x="0" y="0" width="235" height="128"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">5</text>
+    <text class="head" x="70" y="38">라우팅</text>
+    <text class="body" x="24" y="76">router.c가 패킷 종류를 확인</text>
+    <text class="body" x="24" y="100">검색, 길찾기, 즐겨찾기 등</text>
+    <text class="body" x="24" y="122">알맞은 함수로 분기</text>
+  </g>
+  <path class="arrow" d="M1095 419 L1020 419"/>
+
+  <g transform="translate(760,355)">
+    <rect class="step" x="0" y="0" width="260" height="128"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">6</text>
+    <text class="head" x="70" y="38">서비스 처리</text>
+    <text class="body" x="24" y="76">검색 서비스, 길찾기 서비스,</text>
+    <text class="body" x="24" y="100">편의시설, 사용자 저장 기능이</text>
+    <text class="body" x="24" y="122">데이터를 조회하고 결과 생성</text>
+  </g>
+  <path class="arrow" d="M760 419 L685 419"/>
+
+  <g transform="translate(405,355)">
+    <rect class="step" x="0" y="0" width="280" height="128"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">7</text>
+    <text class="head" x="70" y="38">응답 문자열 생성</text>
+    <text class="code" x="24" y="78">STOP_SEARCH_RES|0|...</text>
+    <text class="body" x="24" y="103">상태 코드와 결과 본문을</text>
+    <text class="body" x="24" y="124">프로토콜 형식으로 조립</text>
+  </g>
+  <path class="arrow" d="M405 419 L330 419"/>
+
+  <g transform="translate(70,355)">
+    <rect class="step" x="0" y="0" width="260" height="128"/>
+    <circle class="badge" cx="34" cy="34" r="22"/><text class="num" x="28" y="41">8</text>
+    <text class="head" x="70" y="38">화면 출력</text>
+    <text class="body" x="24" y="76">result_viewer.c가 응답을</text>
+    <text class="body" x="24" y="100">목록, 경로, 메시지 형태로</text>
+    <text class="body" x="24" y="122">사용자에게 보여줌</text>
+  </g>
+
+  <rect x="120" y="590" width="1160" height="175" rx="12" fill="#ffffff" stroke="#d8deea" stroke-width="2"/>
+  <text class="head" x="150" y="635">프로토콜 구성 예시</text>
+  <text class="code" x="150" y="675">요청:  PKT_TYPE|payload\n</text>
+  <text class="code" x="150" y="715">응답:  PKT_TYPE|ERR_CODE|payload\n</text>
+  <text class="note" x="150" y="750">예: 길찾기 요청은 TRANSFER_REQ|출발지:도착지 형식으로 전송하고, 서버는 경로 요약·환승 횟수·구간 정보를 응답합니다.</text>
+
+  <path class="dashed" d="M1212 483 C1212 545 188 545 188 483"/>
+  <text class="note" x="555" y="535">응답은 서버에서 다시 클라이언트 방향으로 전송됩니다.</text>
+</svg>

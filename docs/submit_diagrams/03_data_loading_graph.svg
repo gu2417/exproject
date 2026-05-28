@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .title { font: 700 34px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .sub { font: 400 18px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #5b6475; }
+      .head { font: 700 21px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .body { font: 400 16px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #384255; }
+      .small { font: 400 14px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #4c566a; }
+      .box { fill: #ffffff; stroke: #d8deea; stroke-width: 2; rx: 10; }
+      .csv { fill: #eaf3ff; stroke: #8bb8ee; }
+      .parse { fill: #fff7e8; stroke: #e7ba64; }
+      .store { fill: #ebf8f1; stroke: #8acba5; }
+      .graph { fill: #f6edff; stroke: #bd95e6; }
+      .use { fill: #fff0f0; stroke: #df8b8b; }
+      .arrow { stroke: #526179; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#526179"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+  <text class="title" x="70" y="70">데이터 로딩 및 그래프 생성도</text>
+  <text class="sub" x="70" y="104">CSV 원본이 서버 메모리 구조와 길찾기 그래프로 바뀌는 과정을 보여줍니다.</text>
+
+  <rect class="box csv" x="70" y="160" width="270" height="510"/>
+  <text class="head" x="100" y="202">CSV 원본 파일</text>
+  <text class="body" x="100" y="250">bus_stops.csv</text>
+  <text class="body" x="100" y="292">bus_routes.csv</text>
+  <text class="body" x="100" y="334">route_stops.csv</text>
+  <text class="body" x="100" y="376">subway_stations.csv</text>
+  <text class="body" x="100" y="418">subway_distances.csv</text>
+  <text class="body" x="100" y="460">facilities.csv</text>
+  <text class="body" x="100" y="502">arrival_test.csv</text>
+  <text class="body" x="100" y="544">crowding_test.csv</text>
+  <text class="small" x="100" y="610">정류장, 노선, 역, 시설, 운행 정보를</text>
+  <text class="small" x="100" y="632">각각 분리된 CSV로 관리합니다.</text>
+
+  <path class="arrow" d="M340 410 L430 410"/>
+
+  <rect class="box parse" x="430" y="220" width="250" height="380"/>
+  <text class="head" x="460" y="262">파싱 단계</text>
+  <text class="body" x="460" y="312">open_csv()</text>
+  <text class="small" x="460" y="335">실행 위치에 맞게 파일 열기</text>
+  <text class="body" x="460" y="382">csv_parse_line()</text>
+  <text class="small" x="460" y="405">쉼표와 따옴표 기준 필드 분리</text>
+  <text class="body" x="460" y="452">csv_find_header()</text>
+  <text class="small" x="460" y="475">필수 컬럼 위치 확보</text>
+  <text class="body" x="460" y="522">값 보정</text>
+  <text class="small" x="460" y="545">빈 숫자, 누락 이름, 좌표 처리</text>
+
+  <path class="arrow" d="M680 410 L770 410"/>
+
+  <rect class="box store" x="770" y="160" width="270" height="510"/>
+  <text class="head" x="800" y="202">서버 메모리 구조</text>
+  <text class="body" x="800" y="250">StopNode 목록</text>
+  <text class="body" x="800" y="292">RouteNode 목록</text>
+  <text class="body" x="800" y="334">RouteStopNode 목록</text>
+  <text class="body" x="800" y="376">StationNode 목록</text>
+  <text class="body" x="800" y="418">SubwayDistanceNode 목록</text>
+  <text class="body" x="800" y="460">FacilityNode 목록</text>
+  <text class="body" x="800" y="502">ArrivalNode 목록</text>
+  <text class="body" x="800" y="544">CrowdingNode 목록</text>
+  <text class="small" x="800" y="610">검색 서비스가 빠르게 순회할 수 있도록</text>
+  <text class="small" x="800" y="632">연결 리스트 형태로 저장합니다.</text>
+
+  <path class="arrow" d="M1040 330 L1135 285"/>
+  <path class="arrow" d="M1040 490 L1135 545"/>
+
+  <rect class="box graph" x="1135" y="190" width="210" height="210"/>
+  <text class="head" x="1162" y="232">환승 그래프</text>
+  <text class="body" x="1162" y="278">노드</text>
+  <text class="small" x="1162" y="302">정류장, 지하철역</text>
+  <text class="body" x="1162" y="345">간선</text>
+  <text class="small" x="1162" y="369">버스, 지하철, 환승/도보</text>
+
+  <rect class="box use" x="1135" y="485" width="210" height="185"/>
+  <text class="head" x="1162" y="527">사용 기능</text>
+  <text class="body" x="1162" y="574">검색 결과 생성</text>
+  <text class="body" x="1162" y="616">최단 경로 탐색</text>
+  <text class="body" x="1162" y="658">편의시설 조회</text>
+
+  <rect class="box" x="170" y="740" width="1060" height="78"/>
+  <text class="head" x="200" y="782">핵심 처리</text>
+  <text class="body" x="340" y="782">load_all_data()가 CSV를 순서대로 읽고, build_transfer_graph()가 정류장·역·환승 정보를 그래프로 연결합니다.</text>
+</svg>

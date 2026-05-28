@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .title { font: 700 34px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .sub { font: 400 18px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #5b6475; }
+      .center { fill: #1f5b99; stroke: #174573; stroke-width: 2; rx: 14; }
+      .panel { fill: #ffffff; stroke: #d8deea; stroke-width: 2; rx: 10; }
+      .blue { fill: #eaf3ff; stroke: #8bb8ee; }
+      .green { fill: #ebf8f1; stroke: #8acba5; }
+      .orange { fill: #fff7e8; stroke: #e7ba64; }
+      .purple { fill: #f6edff; stroke: #bd95e6; }
+      .head { font: 700 21px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #172033; }
+      .white { font: 700 24px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #ffffff; }
+      .center-sub { font: 400 15px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #dcecff; }
+      .body { font: 400 16px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #384255; }
+      .small { font: 400 14px 'Malgun Gothic', 'Noto Sans CJK KR', Arial, sans-serif; fill: #4c566a; }
+      .arrow { stroke: #526179; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#526179"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+  <text class="title" x="70" y="70">주요 기능 모듈 구성도</text>
+  <text class="sub" x="70" y="104">사용자 기능이 어떤 입력, 서버 모듈, 출력 결과로 연결되는지 정리했습니다.</text>
+
+  <rect class="center" x="465" y="360" width="470" height="130"/>
+  <text class="white" x="522" y="412">아산/천안 대중교통 정보 시스템</text>
+  <text class="center-sub" x="550" y="450">콘솔 메뉴 + TCP 서버 + CSV 기반 데이터 처리</text>
+
+  <rect class="panel blue" x="80" y="170" width="300" height="230"/>
+  <text class="head" x="110" y="212">1. 검색 기능</text>
+  <text class="body" x="110" y="255">입력: 정류장명, 버스 번호, 역명</text>
+  <text class="body" x="110" y="295">모듈: search_service.c</text>
+  <text class="body" x="110" y="335">출력: 목록형 검색 결과</text>
+  <text class="small" x="110" y="370">정류장에는 경유 노선과 도착 정보,</text>
+  <text class="small" x="110" y="392">버스에는 경유 정류장 목록을 표시합니다.</text>
+
+  <rect class="panel green" x="1020" y="170" width="300" height="230"/>
+  <text class="head" x="1050" y="212">2. 길찾기 기능</text>
+  <text class="body" x="1050" y="255">입력: 출발지, 도착지</text>
+  <text class="body" x="1050" y="295">모듈: transfer_service.c</text>
+  <text class="body" x="1050" y="335">출력: 최단 경로, 환승 횟수</text>
+  <text class="small" x="1050" y="370">그래프의 간선 가중치를 이용해</text>
+  <text class="small" x="1050" y="392">예상 소요 시간을 계산합니다.</text>
+
+  <rect class="panel orange" x="80" y="560" width="300" height="230"/>
+  <text class="head" x="110" y="602">3. 편의시설 기능</text>
+  <text class="body" x="110" y="645">입력: 정류장/역명, 카테고리</text>
+  <text class="body" x="110" y="685">모듈: facility_service.c</text>
+  <text class="body" x="110" y="725">출력: 주변 시설 목록</text>
+  <text class="small" x="110" y="760">시설의 nearest_node_id를 기준으로</text>
+  <text class="small" x="110" y="782">입력 위치 주변 정보를 조회합니다.</text>
+
+  <rect class="panel purple" x="1020" y="560" width="300" height="230"/>
+  <text class="head" x="1050" y="602">4. 사용자 기록 기능</text>
+  <text class="body" x="1050" y="645">입력: 즐겨찾기 대상, 검색 결과</text>
+  <text class="body" x="1050" y="685">모듈: user_state_service.c</text>
+  <text class="body" x="1050" y="725">출력: 즐겨찾기, 최근 검색</text>
+  <text class="small" x="1050" y="760">CSV에 존재하는 대상만 저장하고</text>
+  <text class="small" x="1050" y="782">최근 검색은 최신순으로 보여줍니다.</text>
+
+  <path class="arrow" d="M380 285 C455 315 455 365 465 398"/>
+  <path class="arrow" d="M1020 285 C945 315 945 365 935 398"/>
+  <path class="arrow" d="M380 675 C455 645 455 495 465 452"/>
+  <path class="arrow" d="M1020 675 C945 645 945 495 935 452"/>
+
+  <rect class="panel" x="470" y="160" width="460" height="112"/>
+  <text class="head" x="500" y="202">공통 처리 기반</text>
+  <text class="body" x="500" y="238">protocol.h, types.h, csv_parser, graph, linked_list</text>
+
+  <rect class="panel" x="470" y="615" width="460" height="112"/>
+  <text class="head" x="500" y="657">저장 및 검증</text>
+  <text class="body" x="500" y="693">favorites.txt, recent_search.txt, 로그 파일</text>
+</svg>
